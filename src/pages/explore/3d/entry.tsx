@@ -3,32 +3,18 @@ import { navigateTo } from '@tarojs/taro';
 import { useState } from 'react';
 import './entry.scss';
 
-/**
- * option
- *   tooltip
- *     formatter不支持
- *   toolbox
- *     feature
- *       saveAsImage不支持
- */
+let prefix = 'pages/explore/3d/pages'
 
-const prefix = 'pages/explore/3d/pages';
+if(process.env.TARO_ENV === 'weapp'){
+  prefix = 'pages';
+}
+
 const routes = [
   {
-    title: '六面体1',
+    title: '六面体',
     routes: [
       {
-        title: '六面体1',
-        url: `${prefix}/base/hexahedron`
-        // state: true // 表示是否异常 true-有问题
-      },
-    ]
-  },
-  {
-    title: '六面体2',
-    routes: [
-      {
-        title: '六面体2',
+        title: '旋转六面体',
         url: `${prefix}/base/hexahedron`
         // state: true // 表示是否异常 true-有问题
       },

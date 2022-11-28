@@ -3,10 +3,13 @@
     flex-direction: row;
     &-left{
       width: 40vw;
+      border-right: solid 1px gray;
+      box-sizing: border-box;
       &__text {
         width: 100%;
         padding: 24px;
         font-size: 32px;
+        display: block;
       }
       &__active{
         background-color: white;
