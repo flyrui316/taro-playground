@@ -132,6 +132,9 @@ const subpackages = [{
   pages: [
     'linear-gradient/index',
   ]
+},{
+  root: 'pages/explore/3d',
+  pages: ['entry','pages/base/hexahedron']
 }]
 
 export default {

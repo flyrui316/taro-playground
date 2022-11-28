@@ -61,6 +61,12 @@ const playList = [{
   },
   title: 'Linear Gradient',
   showRightArrow: true,
+},{
+  data: {
+    page: '/pages/explore/3d/entry'
+  },
+  title: '3D',
+  showRightArrow: true
 }]
 
 function loadDemo ({ web, title, bundle, mp }) {
