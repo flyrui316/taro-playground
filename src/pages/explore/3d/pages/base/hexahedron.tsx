@@ -1,5 +1,6 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { ExpoWebGLRenderingContext } from 'expo-gl';
+import {Text, Button} from '@tarojs/components'
 import {
     AmbientLight,
     Fog,
@@ -18,14 +19,21 @@ import {View3D, Renderer} from '../../../../../../node_modules/taro-3d/build/mai
 export default function TabOneScreen() {
   let timeout:number;
 
+  const [height, setHeight] = useState(500)
+
   useEffect(() => {
     // Clear the animation loop when the component unmounts
     return () => clearTimeout(timeout);
   }, []);
 
+  const heightClick = useCallback(()=>{
+    setHeight(height + 100)
+  },[height]);
+
   return (
+    <>
     <View3D
-      style={{ flex: 1, height: 500, with: 500 }}
+      style={{ flex: 1, height, with: 500 }}
       onContextCreate={async (gl: ExpoWebGLRenderingContext) => {
         const { drawingBufferWidth: width, drawingBufferHeight: height } = gl;
         const sceneColor = 0x6ad6f0;
@@ -81,5 +89,7 @@ export default function TabOneScreen() {
         render();
       }}
     />
+    <Button onClick={heightClick}><Text>点击增加3d区域高度</Text></Button>
+    </>
   );
 }
