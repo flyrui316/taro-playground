@@ -19,7 +19,7 @@ import {View3D, Renderer} from '../../../../../../node_modules/taro-3d/build/mai
 export default function TabOneScreen() {
   let timeout:number;
 
-  const [height, setHeight] = useState(500)
+  const [viewHeight, setViewHeight] = useState(500)
 
   useEffect(() => {
     // Clear the animation loop when the component unmounts
@@ -27,13 +27,13 @@ export default function TabOneScreen() {
   }, []);
 
   const heightClick = useCallback(()=>{
-    setHeight(height + 100)
-  },[height]);
+    setViewHeight(viewHeight + 100)
+  },[viewHeight]);
 
   return (
     <>
     <View3D
-      style={{ flex: 1, height, with: 500 }}
+      style={{ flex: 1, height: viewHeight, with: 500 }}
       onContextCreate={async (gl: ExpoWebGLRenderingContext) => {
         const { drawingBufferWidth: width, drawingBufferHeight: height } = gl;
         const sceneColor = 0x6ad6f0;
