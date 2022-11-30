@@ -13,7 +13,7 @@ import {
     MeshBasicMaterial,
 } from 'three';
 import {View3D, Renderer} from 'taro-3d/build/main'
-
+import {ExpoWebGLRenderingContext} from 'taro-3d/build/main/lib/View3D.types'
 
 export default function TabOneScreen() {
   let timeout:number;
@@ -33,7 +33,7 @@ export default function TabOneScreen() {
     <>
     <View3D
       style={{ flex: 1, height: viewHeight, with: 500 }}
-      onContextCreate={async (gl: any) => {
+      onContextCreate={async (gl: ExpoWebGLRenderingContext) => {
         const { drawingBufferWidth: width, drawingBufferHeight: height } = gl;
         const sceneColor = 0x6ad6f0;
 

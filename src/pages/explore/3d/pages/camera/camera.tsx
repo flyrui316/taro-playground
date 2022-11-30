@@ -15,7 +15,7 @@ import {
     Points,
 } from 'three';
 import {View3D, Renderer} from 'taro-3d/build/main'
-
+import {ExpoWebGLRenderingContext} from 'taro-3d/build/main/lib/View3D.types'
 
 export default function TabOneScreen() {
 
@@ -23,7 +23,7 @@ export default function TabOneScreen() {
     <>
     <View3D
       style={{ flex: 1, height: Taro.getSystemInfoSync().windowHeight, with: Taro.getSystemInfoSync().windowWidth }}
-      onContextCreate={async (gl: any) => {
+      onContextCreate={async (gl: ExpoWebGLRenderingContext) => {
         const { drawingBufferWidth: SCREEN_WIDTH, drawingBufferHeight: SCREEN_HEIGHT } = gl;
         const sceneColor = 0x000000;
         const frustumSize = 600;
