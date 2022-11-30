@@ -20,6 +20,16 @@ const routes = [
       },
     ]
   },
+  {
+    title: 'camera',
+    routes: [
+      {
+        title: 'camera',
+        url: `${prefix}/camera/camera`
+        // state: true // 表示是否异常 true-有问题
+      },
+    ]
+  },
 ];
 
 export default function Entry() {

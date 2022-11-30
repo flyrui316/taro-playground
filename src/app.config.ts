@@ -134,7 +134,7 @@ const subpackages = [{
   ]
 },{
   root: 'pages/explore/3d',
-  pages: ['entry','pages/base/hexahedron']
+  pages: ['entry','pages/base/hexahedron','pages/camera/camera']
 }]
 
 export default {

@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useState } from 'react';
-import { ExpoWebGLRenderingContext } from 'expo-gl';
 import {Text, Button} from '@tarojs/components'
 import {
     AmbientLight,
@@ -11,9 +10,9 @@ import {
     Scene,
     SpotLight,
     BoxGeometry,
-    MeshBasicMaterial
+    MeshBasicMaterial,
 } from 'three';
-import {View3D, Renderer} from '../../../../../../node_modules/taro-3d/build/main'
+import {View3D, Renderer} from 'taro-3d/build/main'
 
 
 export default function TabOneScreen() {
@@ -34,7 +33,7 @@ export default function TabOneScreen() {
     <>
     <View3D
       style={{ flex: 1, height: viewHeight, with: 500 }}
-      onContextCreate={async (gl: ExpoWebGLRenderingContext) => {
+      onContextCreate={async (gl: any) => {
         const { drawingBufferWidth: width, drawingBufferHeight: height } = gl;
         const sceneColor = 0x6ad6f0;
 
