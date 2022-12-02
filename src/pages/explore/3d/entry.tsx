@@ -21,12 +21,19 @@ const routes = [
     ]
   },
   {
-    title: 'camera',
+    title: 'webgl',
     routes: [
       {
-        title: 'camera',
-        url: `${prefix}/camera/camera`
-        // state: true // 表示是否异常 true-有问题
+        title: 'webgl_camera',
+        url: `${prefix}/webgl/camera/camera`
+      },
+      {
+        title: 'webgl_geometries',
+        url: `${prefix}/webgl/geometries/geometries`
+      },
+      {
+        title: 'webgl_geometries-weapp',
+        url: `${prefix}/webgl/geometries-weapp/geometries`
       },
     ]
   },
