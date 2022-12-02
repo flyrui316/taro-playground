@@ -31,10 +31,6 @@ const routes = [
         title: 'webgl_geometries',
         url: `${prefix}/webgl/geometries/geometries`
       },
-      {
-        title: 'webgl_geometries-weapp',
-        url: `${prefix}/webgl/geometries-weapp/geometries`
-      },
     ]
   },
 ];
