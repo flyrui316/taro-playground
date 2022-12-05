@@ -15,7 +15,6 @@ import {
     Points,
     AmbientLight,
     PointLight,
-    TextureLoader,
     RepeatWrapping,
     MeshPhongMaterial,
     DoubleSide,
@@ -32,7 +31,7 @@ import {
     TorusGeometry,
     TorusKnotGeometry,
 } from 'three';
-import {View3D, Renderer} from 'taro-3d/build/main'
+import {View3D, Renderer, TextureLoader} from 'taro-3d/build/main'
 import {ExpoWebGLRenderingContext} from 'taro-3d/build/main/lib/View3D.types';
 
 

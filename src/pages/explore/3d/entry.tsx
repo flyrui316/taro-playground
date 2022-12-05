@@ -28,6 +28,10 @@ const routes = [
         url: `${prefix}/webgl/camera/camera`
       },
       {
+        title: 'webgl_geometries_cube',
+        url: `${prefix}/webgl/geometries/cube`
+      },
+      {
         title: 'webgl_geometries',
         url: `${prefix}/webgl/geometries/geometries`
       },
