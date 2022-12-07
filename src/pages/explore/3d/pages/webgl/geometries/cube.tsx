@@ -77,7 +77,7 @@ class IconMesh extends Mesh {
     super(
       new BoxGeometry(1.0, 1.0, 1.0),
       new MeshStandardMaterial({
-        map: new TextureLoader().load('https://pic5.58cdn.com.cn/nowater/frs/n_v3da1c2ed4d5854d5f9fcd3969a01f811c.jpg'),
+        map: new TextureLoader().load('https://pic1.58cdn.com.cn/nowater/frs/n_v3574a49f429d142c3bee2469e9528e470.jpg'),
         // color: 0xff0000
       })
     );

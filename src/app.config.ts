@@ -134,7 +134,7 @@ const subpackages = [{
   ]
 },{
   root: 'pages/explore/3d',
-  pages: ['entry','pages/base/hexahedron','pages/webgl/camera/camera','pages/webgl/geometries/geometries','pages/webgl/geometries/cube']
+  pages: ['entry','pages/base/hexahedron','pages/webgl/camera/camera','pages/webgl/geometries/geometries','pages/webgl/geometries/cube','pages/webgl/loaders/fbx']
 }]
 
 export default {

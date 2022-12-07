@@ -35,6 +35,10 @@ const routes = [
         title: 'webgl_geometries',
         url: `${prefix}/webgl/geometries/geometries`
       },
+      {
+        title: 'webgl_loaders_fbx',
+        url: `${prefix}/webgl/loaders/fbx`
+      },
     ]
   },
 ];
