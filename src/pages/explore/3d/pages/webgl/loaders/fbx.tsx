@@ -7,15 +7,12 @@ import {
     Fog,
     GridHelper,
     SpotLight,
-    Mesh,
-    MeshStandardMaterial,
-    BoxGeometry,
     AnimationMixer,
     Clock,
     Group,
     
 } from 'three';
-import {View3D, Renderer, TextureLoader, loadAsync} from 'taro-3d/build/main'
+import {View3D, Renderer, loadAsync} from 'taro-3d/build/main'
 import {ExpoWebGLRenderingContext} from 'taro-3d/build/main/lib/View3D.types';
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader';
 
@@ -23,7 +20,6 @@ import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader';
 export default function TabOneScreen() {
 
   return (
-    <>
     <View3D
       style={{ flex: 1, height: Taro.getSystemInfoSync().windowHeight, with: Taro.getSystemInfoSync().windowWidth }}
       onContextCreate={async (gl: ExpoWebGLRenderingContext) => {
@@ -57,29 +53,8 @@ export default function TabOneScreen() {
         scene.add(spotLight);
         
         const Floader = new FBXLoader();
-        const loadFile = (loader, url):Promise<Group> => {
-            return new Promise((resolve, reject)=>{
-                loader.load(url, res=>resolve(res), ()=>{}, error=>reject(error))
-            })
-        }
         const fbxFileUrl = 'https://wos2.58cdn.com.cn/DeFazYxWvDti/frsupload/9a80489e046f0d3e164a6f0955a8df98_SambaDancing.fbx'
-        let object:Group = await loadAsync(Floader, fbxFileUrl)
-        console.log(11111222, object)
-        
-        // let object:Group = null;
-        // const dancingFbx = require('../assets/models/dancing.fbx');
-        // if(Platform.OS === 'web'){
-        //   const asset = Asset.fromModule(dancingFbx);
-        //   await asset.downloadAsync();
-        //   object = await loader.loadAsync(asset.localUri!)
-        // } else {
-        //   const uri = (await resolveAsync(dancingFbx)).localUri ?? null;
-        //   const base64 = await FileSystem.readAsStringAsync( uri!, {
-        //     encoding: FileSystem.EncodingType.Base64,
-        //   });
-        //   const arrayBuffer = decode(base64);
-        //   object = loader.parse(arrayBuffer, '');
-        // }
+        const object:Group = await loadAsync(Floader, fbxFileUrl)
 
         const mixer = new AnimationMixer(object);
           const action = mixer.clipAction(object.animations[0]);
@@ -107,17 +82,5 @@ export default function TabOneScreen() {
           render();
       }}
     />
-    </>
   );
-}
-class IconMesh extends Mesh {
-  constructor() {
-    super(
-      new BoxGeometry(1.0, 1.0, 1.0),
-      new MeshStandardMaterial({
-        map: new TextureLoader().load('https://pic1.58cdn.com.cn/nowater/frs/n_v3574a49f429d142c3bee2469e9528e470.jpg'),
-        // color: 0xff0000
-      })
-    );
-  }
 }
