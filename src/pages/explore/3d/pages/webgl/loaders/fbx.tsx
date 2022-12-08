@@ -10,23 +10,24 @@ import {
     AnimationMixer,
     Clock,
     Group,
+    OffscreenCanvas,
     
 } from 'three';
 import {View3D, Renderer, loadAsync} from 'taro-3d/build/main'
 import {ExpoWebGLRenderingContext} from 'taro-3d/build/main/lib/View3D.types';
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader';
-
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 
 export default function TabOneScreen() {
 
   return (
     <View3D
       style={{ flex: 1, height: Taro.getSystemInfoSync().windowHeight, with: Taro.getSystemInfoSync().windowWidth }}
-      onContextCreate={async (gl: ExpoWebGLRenderingContext) => {
+      onContextCreate={async (gl: ExpoWebGLRenderingContext, canvas: HTMLCanvasElement | OffscreenCanvas) => {
         const { drawingBufferWidth: width, drawingBufferHeight: height } = gl;
         const sceneColor = 0x6ad6f0;
 
-        const renderer = new Renderer({ gl });
+        const renderer = new Renderer({ gl , canvas});
         renderer.setSize(width, height);
         renderer.setClearColor(sceneColor);
 
@@ -52,34 +53,38 @@ export default function TabOneScreen() {
         spotLight.lookAt(scene.position);
         scene.add(spotLight);
         
+        const controls = new OrbitControls( camera, renderer.domElement );
+        controls.target.set( 1, 2, 1 );
+        controls.update();
+
         const Floader = new FBXLoader();
         const fbxFileUrl = 'https://wos2.58cdn.com.cn/DeFazYxWvDti/frsupload/9a80489e046f0d3e164a6f0955a8df98_SambaDancing.fbx'
         const object:Group = await loadAsync(Floader, fbxFileUrl)
 
         const mixer = new AnimationMixer(object);
-          const action = mixer.clipAction(object.animations[0]);
-          action.play();
-          object.scale.set(0.015, 0.015, 0.015)
-          scene.add(object)
-          camera.lookAt(object.position)
-          object.traverse(function (child) {
-            if (child?.isMesh) {
-              child.castShadow = true;
-              child.receiveShadow = true;
-            }
-          });
-          const clock = new Clock();
-          function update() {
-            mixer.update(clock.getDelta())
+        const action = mixer.clipAction(object.animations[0]);
+        action.play();
+        object.scale.set(0.015, 0.015, 0.015)
+        scene.add(object)
+        camera.lookAt(object.position)
+        object.traverse(function (child) {
+          if (child?.isMesh) {
+            child.castShadow = true;
+            child.receiveShadow = true;
           }
-          
-          const render = () => {
-            requestAnimationFrame(render);
-            update();
-            renderer.render(scene, camera);
-            gl.endFrameEXP();
-          };
-          render();
+        });
+        const clock = new Clock();
+        function update() {
+          mixer.update(clock.getDelta())
+        }
+
+        const render = () => {
+          requestAnimationFrame(render);
+          update();
+          renderer.render(scene, camera);
+          gl.endFrameEXP();
+        };
+        render();
       }}
     />
   );
