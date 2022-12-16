@@ -129,7 +129,7 @@ const subpackages = [
   },
   {
     root: 'pages/explore/others',
-    pages: ['linear-gradient/index']
+    pages: ['linear-gradient/index','taro-echarts/index']
   }
 ];
 
