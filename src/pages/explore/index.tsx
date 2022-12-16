@@ -9,7 +9,7 @@ import {
   TooltipComponent,
   GridComponent
 } from 'echarts/components';
-import {Echarts, SVGRenderer} from 'taro-echarts/build/main'
+import {Echarts, EchartsRenderer} from 'taro-echarts/build/main'
 import { useEffect, useRef, useState } from 'react';
 
 // register extensions
@@ -17,7 +17,7 @@ echarts.use([
     TitleComponent,
     TooltipComponent,
     GridComponent,
-    SVGRenderer,
+    EchartsRenderer,
     // ...
     BarChart,
   ])
