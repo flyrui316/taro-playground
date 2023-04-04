@@ -1,3 +1,3 @@
 export default {
-  navigationBarTitleText: 'taro-echarts'
+  navigationBarTitleText: 'taro-charts'
 }

@@ -77,17 +77,20 @@ const playList = [
     data: {
       page: '/pages/explore/others/taro-echarts/index'
     },
-    title: 'taro-echarts',
+    title: 'taro-charts',
     showRightArrow: true
   },
-  {
+];
+
+if(process.env.TARO_ENV === 'rn'){
+  playList.push(  {
     data: {
       page: '/pages/explore/charts/entry'
     },
     title: 'Echarts',
     showRightArrow: true
-  }
-];
+  })
+}
 
 function loadDemo({ web, title, bundle, mp }) {
   if (isWeb) {

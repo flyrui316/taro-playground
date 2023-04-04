@@ -9,8 +9,8 @@ import {
   TooltipComponent,
   GridComponent
 } from 'echarts/components';
-import {Echarts, EchartsRenderer} from 'taro-echarts/build/main'
-import { useEffect, useRef, useState } from 'react';
+import {Echarts, EchartsRenderer} from 'taro-charts'
+import { useCallback, useEffect, useState } from 'react';
 
 // register extensions
 echarts.use([
@@ -22,8 +22,8 @@ echarts.use([
     BarChart,
   ])
   
-  const E_HEIGHT = 250;
-  const E_WIDTH = 300;
+  const E_HEIGHT = 300;
+  const E_WIDTH = 400;
 
 export default function TaorEcharts({ option ={
     xAxis: {
@@ -40,30 +40,29 @@ export default function TaorEcharts({ option ={
       },
     ],
   } }) {
-    const ref = useRef<any>(null);
     const [chart, setChart] = useState<echarts.ECharts>();
-    // useEffect(() => {
-    //   let chart: any;
-    //   if (ref.current) {
-    //     // @ts-ignore
-    //     chart = echarts.init(ref.current, 'light', {
-    //       renderer: 'svg',
-    //       width: E_WIDTH,
-    //       height: E_HEIGHT,
-    //     });
-    //     chart.setOption(option);
-    //   }
-    //   return () => chart?.dispose();
-    // }, [option]);
+
     useEffect(()=>{
-      return ()=> chart?.dispose();
+      clickedCharts()
+      return ()=> {
+        if (process.env.TARO_ENV !== 'weapp') {
+          chart?.dispose()
+        }
+      }
     },[chart])
-    return <Echarts style={{flex: 1, height: 300, width: 300 }} onContextCreate={(canvas)=>{
+
+    const clickedCharts = useCallback(()=>{
+      chart?.on('click', function(params) {
+        console.log(params)
+    });
+    },[chart])
+    return <Echarts style={{flex: 1, height: E_HEIGHT, width: E_WIDTH }} onContextCreate={(canvas)=>{
           const charts = echarts.init(canvas, 'light', {
             renderer: 'svg',
             width: E_WIDTH,
             height: E_HEIGHT,
         });
+        canvas.setChart?.(charts);
         charts.setOption(option);
         setChart(charts)
     }}
