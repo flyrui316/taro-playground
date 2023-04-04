@@ -72,7 +72,14 @@ const playList = [
     },
     title: 'Linear Gradient',
     showRightArrow: true
-  }
+  },
+  {
+    data: {
+      page: '/pages/explore/taro-charts/index'
+    },
+    title: 'taro-charts',
+    showRightArrow: true
+  },
 ];
 
 if(isRN) {

@@ -130,6 +130,10 @@ const subpackages = [
   {
     root: 'pages/explore/others',
     pages: ['linear-gradient/index']
+  },
+  {
+    root: 'pages/explore/taro-charts',
+    pages: ['index']
   }
 ];
 

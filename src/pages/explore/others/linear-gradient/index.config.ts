@@ -1,3 +1,3 @@
-export default definePageConfig({
-  navigationBarTitleText: 'Linear Gradient'
-})
+export default {
+  navigationBarTitleText: 'taro-charts'
+}
