@@ -75,7 +75,7 @@ const playList = [
   },
   {
     data: {
-      page: '/pages/explore/taro-charts/index'
+      page: '/pages/explore/taro-charts/entry'
     },
     title: 'taro-charts',
     showRightArrow: true

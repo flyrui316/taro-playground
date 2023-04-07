@@ -133,7 +133,15 @@ const subpackages = [
   },
   {
     root: 'pages/explore/taro-charts',
-    pages: ['index']
+    pages: [
+      'entry',
+      'pages/line/lineSimple',
+      'pages/line/lineSmooth',
+      'pages/line/areaBasic',
+      'pages/line/lineStack',
+      'pages/line/areaStack',
+      'pages/line/lineMarker',
+    ]
   }
 ];
 
